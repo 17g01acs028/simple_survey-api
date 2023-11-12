@@ -18,7 +18,7 @@ This Node.js API simplifies the process of working with surveys. It enables user
      - Access the full API documentation in the provided Postman collection.
 
 3. **Save Responses:**
-   - `PUT /api/question/responses`
+   - `PUT /api/questions/responses`
      - Saves user responses and handles data storage in the database.
 
 4. **Download Files:**

@@ -12,6 +12,6 @@ router.get("/responses",getResponse);
 router.post('/new', addQuestion);
 
 //download file
-router.get('/response/download/:filename', downloadFile); 
+router.get('/responses/download/:filename', downloadFile); 
 
 export default router;
