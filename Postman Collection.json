@@ -1,0 +1,743 @@
+{
+	"info": {
+		"_postman_id": "0bfe291b-c156-4722-bf98-ea2480497f15",
+		"name": "Sky_Survey_API",
+		"description": "The Interview Test Survey System API is tailored to handle questions and responses. It offers three main endpoints to facilitate the management of interview questions and responses.\n\n**API Endpoints:**\n\n1. **Fetch Questions (GET):**\n    - Endpoint: `http://localhost:5000/api/questions`\n    - Description: Retrieve a list of interview questions from the database. Use a GET request to access the available questions.\n2. **Insert Responses (PUT):**\n    - Endpoint: `http://localhost:5000/api/questions/responses`\n    - Description: Insert interview responses into the database. Employ a PUT request to submit participant responses for further analysis.\n3. **Fetch Responses (GET):**\n    \n    - Endpoint: `http://localhost:5000/api/questions/responses`\n    - Description: Retrieve interview responses from the database. Utilize a GET request, and optionally, use parameters like `page`, `pageSize`, and `email` to filter and paginate the response data. For example, you can fetch responses for a specific email address, limiting the results to a specified page and page size.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25506702"
+	},
+	"item": [
+		{
+			"name": "Fetch_Questions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions"
+					]
+				},
+				"description": "When you make a GET request to the `http://localhost:5000/api/question` endpoint, the Interview Test Survey System API retrieves all interview questions stored in the database and converts the response into the XML format."
+			},
+			"response": [
+				{
+					"name": "Questions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"questions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "cross-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2657"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a61-PjfdGwjIsguzJwN76xOgSxQi8Ak\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 08 Nov 2023 09:00:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<questions>\n    <question name=\"full_name\" type=\"short_text\" required=\"yes\">\n        <text>What is your full name?</text>\n        <description>[Surname] [First Name] [Other Names]</description>\n    </question>\n    <question name=\"email_address\" type=\"email\" required=\"yes\">\n        <text>What is your email address?</text>\n        <description></description>\n    </question>\n    <question name=\"description\" type=\"long_text\" required=\"yes\">\n        <text>Tell us a bit more about yourself</text>\n        <description></description>\n    </question>\n    <question name=\"gender\" type=\"choice\" required=\"yes\">\n        <text>What is your gender?</text>\n        <description></description>\n        <options multiple=\"no\">\n            <option value=\"Male\">Male</option>\n            <option value=\"Female\">Female</option>\n            <option value=\"Other\">Other</option>\n        </options>\n    </question>\n    <question name=\"programming_stack\" type=\"choice\" required=\"yes\">\n        <text>What is your gender?</text>\n        <description>You can select multiple</description>\n        <options multiple=\"yes\">\n            <option value=\"React\">React</option>\n            <option value=\"Angular\">Angular</option>\n            <option value=\"VUE\">VUE</option>\n            <option value=\"SQL\">SQL</option>\n            <option value=\"POSTGRES\">POSTGRES</option>\n            <option value=\"MYSQL\">MYSQL</option>\n            <option value=\"MSSQL\">MSSQL</option>\n            <option value=\"Java\">Java</option>\n            <option value=\"PHP\">PHP</option>\n            <option value=\"GO\">GO</option>\n            <option value=\"RUST\">RUST</option>\n        </options>\n    </question>\n    <question name=\"certificates\" type=\"file\" required=\"yes\">\n        <text>Upload any of your certificates?</text>\n        <description>You can upload multiple (.pdf)</description>\n        <file_properties format=\".pdf\" max_file_size=\"1\" max_file_size_unit=\"mb\" multiple=\"yes\"/>\n    </question>\n</questions>"
+				}
+			]
+		},
+		{
+			"name": "Fetch_responses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/questions/responses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions",
+						"responses"
+					]
+				},
+				"description": "When you make a GET request to the `http://localhost:5000/api/questions/responses` endpoint, the Interview Test Survey System API allows you to retrieve interview responses from the database, with the option to apply pagination."
+			},
+			"response": [
+				{
+					"name": "responses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/questions/responses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"questions",
+								"responses"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "cross-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/xml; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3181"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c6d-3/+7h0djMiKFESfa1MK1qV5F6Hk\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 08 Nov 2023 09:02:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<question_responses current_page=\"1\" last_page=\"1\" page_size=\"10\" total_count=\"7\">\n    <question_response>\n        <response_id>9164319d-cdc0-48da-8fa3-1f0b13d3d37a</response_id>\n        <full_name>James  Makau Chengo</full_name>\n        <email_address>james@gmail.com</email_address>\n        <description>I am a software developer :)</description>\n        <gender>Male</gender>\n        <programming_stack>[\"MYSQL\",\"Java\",\"PHP\"]</programming_stack>\n        <certificates>\n            <certificate>Milestone02_Stephen_Mutio_29.10.2023.pdf</certificate>\n            <certificate>Copy of PICS and Personal Mission Statement Worksheet - ALX Foundations Cohort 2 (2).pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>8bee55e2-a6c1-44c3-88ff-1e08a0ca00d6</response_id>\n        <full_name>steve Mutio Mutua</full_name>\n        <email_address>steve@gmail.com</email_address>\n        <description>Am a software engineer with 20 years of experience</description>\n        <gender>Male</gender>\n        <programming_stack>[\"React\",\"VUE\",\"MYSQL\"]</programming_stack>\n        <certificates>\n            <certificate>k.C.S.E.pdf</certificate>\n            <certificate>Milestone 2_rubric.pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>4b054882-aa9a-4a2a-9356-b6820816c307</response_id>\n        <full_name>Kennedy Makau</full_name>\n        <email_address>ken@gmail.com</email_address>\n        <description>Tech Master</description>\n        <gender>Male</gender>\n        <programming_stack>[\"React\",\"Angular\"]</programming_stack>\n        <certificates>\n            <certificate>Untitled document.pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>8131c8b2-1e81-4df5-8223-1c9665bd2b98</response_id>\n        <full_name>John Kimeu</full_name>\n        <email_address>john@gmail.com</email_address>\n        <description>I am a web developer</description>\n        <gender>Male</gender>\n        <programming_stack>[\"React\",\"VUE\",\"SQL\",\"MYSQL\"]</programming_stack>\n        <certificates>\n            <certificate>Sky World Limited - Software Engineering Pre-Interview Task.pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>65bc20f9-c26b-418f-8968-821ca6f4e1b6</response_id>\n        <full_name>Kennedy Nyongesa</full_name>\n        <email_address>kennedynyong@gmail.com</email_address>\n        <description>I am a start in software development</description>\n        <gender>Male</gender>\n        <programming_stack>[\"React\",\"VUE\",\"MYSQL\"]</programming_stack>\n        <certificates>\n            <certificate>Sky World Limited - Software Engineering Pre-Interview Task.pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>e99830e3-2c3a-4775-be68-ec5493e5e2c0</response_id>\n        <full_name>James kamau</full_name>\n        <email_address>james@gmail.com</email_address>\n        <description>AM a social worker</description>\n        <gender>Male</gender>\n        <programming_stack>[\"React\",\"VUE\"]</programming_stack>\n        <certificates>\n            <certificate>Milestone 2_rubric.pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>2015a32c-0efd-4fc2-886a-9c6694183337</response_id>\n        <full_name>Kanya Mutua</full_name>\n        <email_address>kenya@gmail.com</email_address>\n        <description>Am developer</description>\n        <gender>Male</gender>\n        <programming_stack>React</programming_stack>\n        <certificates>\n            <certificate>20739@resume[1].docx</certificate>\n        </certificates>\n    </question_response>\n</question_responses>"
+				}
+			]
+		},
+		{
+			"name": "responses_params",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/questions/responses?page=2&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions",
+						"responses"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				},
+				"description": "**Pagination:** The API provides optional parameters for pagination, specifically `page` and `pageSize`. These parameters allow you to customize the size of the response set and specify the page of responses to retrieve."
+			},
+			"response": [
+				{
+					"name": "pagination",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/questions/responses?page=2&pageSize=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"questions",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "cross-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/xml; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "863"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"35f-evHIjyZpQGA1EELdgsYo+huR+7E\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 08 Nov 2023 09:03:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<question_responses current_page=\"2\" last_page=\"2\" page_size=\"5\" total_count=\"7\">\n    <question_response>\n        <response_id>e99830e3-2c3a-4775-be68-ec5493e5e2c0</response_id>\n        <full_name>James kamau</full_name>\n        <email_address>james@gmail.com</email_address>\n        <description>AM a social worker</description>\n        <gender>Male</gender>\n        <programming_stack>[\"React\",\"VUE\"]</programming_stack>\n        <certificates>\n            <certificate>Milestone 2_rubric.pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>2015a32c-0efd-4fc2-886a-9c6694183337</response_id>\n        <full_name>Kanya Mutua</full_name>\n        <email_address>kenya@gmail.com</email_address>\n        <description>Am developer</description>\n        <gender>Male</gender>\n        <programming_stack>React</programming_stack>\n        <certificates>\n            <certificate>20739@resume[1].docx</certificate>\n        </certificates>\n    </question_response>\n</question_responses>"
+				},
+				{
+					"name": "filter_email",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/questions/responses?page=1&pageSize=5&email=james@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"questions",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								},
+								{
+									"key": "email",
+									"value": "james@gmail.com"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "cross-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/xml; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1039"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"40f-3EQjMK6ZsFyYrUzMrgq8OBk0aQo\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 08 Nov 2023 09:04:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<question_responses current_page=\"1\" last_page=\"2\" page_size=\"5\" total_count=\"7\">\n    <question_response>\n        <response_id>9164319d-cdc0-48da-8fa3-1f0b13d3d37a</response_id>\n        <full_name>James  Makau Chengo</full_name>\n        <email_address>james@gmail.com</email_address>\n        <description>I am a software developer :)</description>\n        <gender>Male</gender>\n        <programming_stack>[\"MYSQL\",\"Java\",\"PHP\"]</programming_stack>\n        <certificates>\n            <certificate>Milestone02_Stephen_Mutio_29.10.2023.pdf</certificate>\n            <certificate>Copy of PICS and Personal Mission Statement Worksheet - ALX Foundations Cohort 2 (2).pdf</certificate>\n        </certificates>\n    </question_response>\n    <question_response>\n        <response_id>e99830e3-2c3a-4775-be68-ec5493e5e2c0</response_id>\n        <full_name>James kamau</full_name>\n        <email_address>james@gmail.com</email_address>\n        <description>AM a social worker</description>\n        <gender>Male</gender>\n        <programming_stack>[\"React\",\"VUE\"]</programming_stack>\n        <certificates>\n            <certificate>Milestone 2_rubric.pdf</certificate>\n        </certificates>\n    </question_response>\n</question_responses>"
+				}
+			]
+		},
+		{
+			"name": "Insert_responses",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "full_name",
+							"value": "Zaphania Sulter",
+							"type": "text"
+						},
+						{
+							"key": "email_address",
+							"value": "Zaphania@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "Male",
+							"type": "text"
+						},
+						{
+							"key": "programming_stack",
+							"value": "[\"React\",\"Angular\"]",
+							"type": "text"
+						},
+						{
+							"key": "certificates",
+							"type": "file",
+							"src": "/home/enum/Downloads/Sky World Limited - Software Engineering Pre-Interview Task.pdf"
+						},
+						{
+							"key": "description",
+							"value": "Am a web developer with 10 years of experience.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/questions/response",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions",
+						"response"
+					]
+				},
+				"description": "When you make a PUT request to the `http://localhost:5000/api/questions/responses` endpoint, the Interview Test Survey System API allows you to insert interview responses into the database for further analysis."
+			},
+			"response": [
+				{
+					"name": "Insert_new_response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "Zaphania Sulter",
+									"type": "text"
+								},
+								{
+									"key": "email_address",
+									"value": "Zaphania@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Male",
+									"type": "text"
+								},
+								{
+									"key": "programming_stack",
+									"value": "[\"React\",\"Angular\"]",
+									"type": "text"
+								},
+								{
+									"key": "certificates",
+									"type": "file",
+									"src": "/home/enum/Downloads/Sky World Limited - Software Engineering Pre-Interview Task.pdf"
+								},
+								{
+									"key": "description",
+									"value": "Am a web developer with 10 years of experience.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/questions/response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"questions",
+								"response"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "cross-origin"
+						},
+						{
+							"key": "Origin-Agent-Cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "450"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c2-YCgTEH8DbMkJfaxJIvccOPR/B48\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 08 Nov 2023 09:45:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<question_response>\n    <full_name>Zaphania Sulter</full_name>\n    <email_address>Zaphania@gmail.com</email_address>\n    <gender>Male</gender>\n    <programming_stack>[\"React\",\"Angular\"]</programming_stack>\n    <description>Am a web developer with 10 years of experience.</description>\n    <certificates>[\"Sky World Limited - Software Engineering Pre-Interview Task.pdf\"]</certificates>\n</question_response>"
+				}
+			]
+		},
+		{
+			"name": "Download_Certificate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/questions/response/download/Milestone02_Stephen_Mutio_29.10.2023.pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions",
+						"response",
+						"download",
+						"Milestone02_Stephen_Mutio_29.10.2023.pdf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
